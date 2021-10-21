@@ -58,6 +58,36 @@ data_confirmed_cases = pd.read_csv("Data1.csv")
 cases_Russia = data_confirmed_cases[data_confirmed_cases["Country/Region"] == "Russia"]
 cases_Russia["Date"] = pd.to_datetime(cases_Russia["Date"])
 
+#Create table with totals
+Top_10_cases_total = data_confirmed_cases.sort_values(by=['Date', 'Confirmed_cases'], ascending=[False, False]).head(10).sort_values(by="Confirmed_cases").replace('United Kingdom', 'UK')
+Top_10_deaths_total = data_confirmed_cases.sort_values(by=['Date', 'Confirmed_deaths'], ascending=[False, False]).head(10).sort_values(by="Confirmed_deaths").replace('United Kingdom', 'UK')
+Top_10_cases_today = data_confirmed_cases.sort_values(by=['Date', 'Cases_per_day'], ascending=[False, False]).head(10).rename(index={"United Kingdom" : "UK"})
+Top_10_deaths_today = data_confirmed_cases.sort_values(by=['Date', 'Deaths_per_day'], ascending=[False, False]).head(10).rename(index={"United Kingdom" : "UK"})
+
+def top_cases(Top_10_cases_total, Top_10_deaths_total, Top_10_cases_today, Top_10_deaths_today):
+    with plt.style.context(('dark_background')):
+        figure, axs = plt.subplots(1, 2, figsize=(10.2, 4))
+        Top_10_cases_total["Confirmed_cases"] = (Top_10_cases_total["Confirmed_cases"] / 1000000).apply(lambda x: round(x, 2))
+        axs[0].barh(Top_10_cases_total["Country/Region"], Top_10_cases_total["Confirmed_cases"])
+        #axs[0].set_xticks(Top_10_cases_total["Confirmed_cases"])
+        axs[0].set_yticks(Top_10_cases_total["Country/Region"])
+        axs[0].set_title("Top 10 countries by total COVID-19 cases\n(mln people)", fontweight="bold", fontsize="large")
+        axs[0].xaxis.set_major_formatter(mlt.ticker.StrMethodFormatter('{x:,.0f}'))
+        for container in axs[0].containers:
+            axs[0].bar_label(container, padding=-28, color="black")
+        plt.setp(axs[0].get_xticklabels(), rotation=15, ha="right")
+
+        axs[1].barh(Top_10_deaths_total["Country/Region"], Top_10_deaths_total["Confirmed_deaths"])
+        #axs[1].set_xticks(Top_10_deaths_total["Confirmed_deaths"])
+        axs[1].set_yticks(Top_10_deaths_total["Country/Region"])
+        axs[1].set_title("Top 10 countries by total deaths from COVID-19\n(people)", fontweight="bold", fontsize="large")
+        axs[1].xaxis.set_major_formatter(mlt.ticker.StrMethodFormatter('{x:,.2f}'))
+        plt.setp(axs[1].get_xticklabels(), rotation=15, ha="right")
+        plt.subplots_adjust(left=0.083, bottom=0.11, right=0.955, top=0.88, wspace=0.255, hspace=0.2)
+        plt.subplot_tool()
+        plt.savefig("Top 10 counties.png")
+
+    plt.show()
 
 def cases_country(data, country):
 #    figure.set_facecolor("#282633")
@@ -104,4 +134,5 @@ def cases_country(data, country):
         plt.subplot_tool()
     plt.show()
 
+top_cases(Top_10_cases_total, Top_10_deaths_total, Top_10_cases_today, Top_10_deaths_today)
 cases_country(cases_Russia, "Russia")
