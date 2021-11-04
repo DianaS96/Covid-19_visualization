@@ -3,6 +3,7 @@ This python file enables to get several interactive plots of COVID-19 using matp
 * Data for Russia:
   * Total cases and total deaths
   * New cases and total deaths
+* World statistics:
   * Top 10 countries with the highest number of confirmed COVID-19 cases
   * Top 10 countries with the highest number of deaths from COVID-19 
 
