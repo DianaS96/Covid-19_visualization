@@ -1,0 +1,1 @@
+IMG_PATH = 'C:/Users/User/Desktop/Programming/Covid-19_visualization/static/img/'
