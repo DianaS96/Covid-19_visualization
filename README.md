@@ -28,8 +28,10 @@ Programming languages and technologies used: Python (Flask, Pandas, NumPy, Matpl
 <details>
   <summary>Click to expand!</summary>
  
-  > ![world_stats](https://user-images.githubusercontent.com/81222865/159135394-b9d1c52a-362b-4cc1-bf94-7a77538727d0.jpg)
+  > ![world_stats](https://user-images.githubusercontent.com/81222865/159172488-b5c4cf1d-a0d8-4288-9779-bf23806d4be2.jpg)
+  > ![covid_spread_map](https://user-images.githubusercontent.com/81222865/159172491-8ad0d332-a959-4a12-b8d7-e12939d34603.jpg)
 
+ 
 </details>
 
 ## Usage
