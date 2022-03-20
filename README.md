@@ -10,6 +10,7 @@ With this app you can get the following info:
   * Daily cases and total deaths
   * Top 10 countries with the highest number of confirmed COVID-19 cases
   * Top 10 countries with the highest number of deaths from COVID-19 
+  * Covid-19 spread in the world (map visualization)
 
 Programming languages and technologies used: Python (Flask, Pandas, NumPy, Matplotlib), HTML, CSS
 
