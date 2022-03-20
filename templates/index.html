@@ -31,22 +31,52 @@
                         <div class="card-body">
                             <h5 class="card-title">Choose country</h5>
                             <select name="Country" id="County" required="required">
-                                <option value="World">World</option>
-                                <option value="China">China</option>
-                                <option value="Germany">Germany</option>
-                                <option value="Russia">Russia</option>
-                                <option value="US">USA</option>
                             </select>
                         </div>
                     </div>
-                    <div style='text-align:center'>
-                        <button type="submit" value='Submit' class="btn btn-primary px-5" style="font-size: 25px;">Submit</button>
+                    <div class="container my-4">
+                        <div style='text-align:center'>
+                            <button type="submit" value='Submit' class="btn btn-primary px-5" style="font-size: 25px;">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
         
     </div>
+
+    <script>
+    var country_array = new Array("World", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", 
+    "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", 
+    "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
+    "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", 
+    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
+    "Comoros", "Congo (Brazzaville)", "Congo (Kinshasa)", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia",
+    "Denmark", "Diamond Princess", "Djibouti", "Dominica", "Dominican Republic",
+    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+    "Fiji", "Finland", "France", 
+    "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+    "Haiti", "Holy See", "Honduras", "Hungary", 
+    "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", 
+    "Kazakhstan", "Kenya", "Kiribati", "Korea", "Kosovo", "Kuwait", "Kyrgyzstan",
+    "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+    "MS Zaandam", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania",
+    "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique",
+    "Namibia", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway",
+    "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", 
+    "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
+    "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
+    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain",
+    "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", 
+    "Taiwan*", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", 
+    "US", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", 
+    "Vanuatu", "Venezuela", "Vietnam", "West Bank and Gaza", "Yemen", "Zambia", "Zimbabwe"), 
+    select_element = document.getElementById('County');
+
+    for(var i = 0; i < country_array.length; i++){
+        select_element.options.add(new Option(country_array[i], country_array[i]));
+    }
+    </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

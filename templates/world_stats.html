@@ -12,6 +12,9 @@
    
     <link rel="stylesheet" href="../static/style.css" type="text/css" media="screen, projection">
 
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"> </script>
+
     <title>Covid-19 stats</title>
   </head>
   <body>
@@ -53,7 +56,13 @@
         
     </div>
 
-
+    <div class = "divider py-1 text-center text-white bg-dark">Plotly data</div>
+      <div class="chart" id="linegraph">
+        <script>
+          var layout = { title : "", xaxis : {title: "Date+Time",dtick: 1,type: 'category' }, yaxis :{title: "whatever"}}
+          var graphs = {{plot|safe}};
+          Plotly.plot('linegraph',graphs,layout);
+    </script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
