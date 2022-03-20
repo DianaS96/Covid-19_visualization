@@ -1,18 +1,25 @@
 # Covid-19_visualization :mask:
-This python file enables to get several interactive plots of COVID-19 using matplotlib:
-* Data for Russia:
+This application enables to create dashboard for the analysis of coronavirus spread.<br>
+
+With this app you can get the following info:
+1) Data for specified country:
   * Total cases and total deaths
-  * New cases and total deaths
-* World statistics:
+  * Daily cases and total deaths
+2) World statistics:
+  * Total cases and total deaths
+  * Daily cases and total deaths
   * Top 10 countries with the highest number of confirmed COVID-19 cases
   * Top 10 countries with the highest number of deaths from COVID-19 
 
-## Example of visualization (data as of 21/10/2021)
-### COVID-19 data for Russia
+Programming languages and technologies used: Python (Flask, Pandas, NumPy, Matplotlib), HTML, CSS
+
+## Example of visualization (data as of 19/03/2022)
+### COVID-19 data for specified country
 <details>
   <summary>Click to expand!</summary>
   
-  > ![Screenshot](Covid_Russia.png)
+  > ![country_stats](https://user-images.githubusercontent.com/81222865/159135349-eda5e1e3-b854-4a2c-993c-f5a0382caf4d.jpg)
+
 </details>
 
 
@@ -20,6 +27,12 @@ This python file enables to get several interactive plots of COVID-19 using matp
 <details>
   <summary>Click to expand!</summary>
  
-  > <img src ="https://github.com/DianaS96/Covid-19_visualization/blob/main/Top%2010%20counties.png">
+  > ![world_stats](https://user-images.githubusercontent.com/81222865/159135394-b9d1c52a-362b-4cc1-bf94-7a77538727d0.jpg)
+
 </details>
+
+## Usage
+* Clone this repo
+* Install all necessary packages (see file requirements.txt)
+* run **`app.py`** or **`flask run`**
 
