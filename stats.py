@@ -5,6 +5,9 @@ import matplotlib as mlt
 import matplotlib.dates as mdates
 from matplotlib.dates import DateFormatter
 from config import IMG_PATH
+import plotly as py
+import plotly.express as px
+import json
 
 #import requests
 #from bs4 import BeautifulSoup
@@ -52,11 +55,12 @@ def get_stats(country):
     data_confirmed_cases["Cases_per_day"] = data_confirmed_cases.groupby(["Country/Region"])["Confirmed_cases"].diff()
     data_confirmed_cases["Deaths_per_day"] = data_confirmed_cases.groupby(["Country/Region"])["Confirmed_deaths"].diff()
 
-    # Saving table to csv file. Then reading data from saved dile
+    # Saving table to csv file. Then reading data from saved file
     data_confirmed_cases.reset_index().to_csv("Data1.csv", index=False)
     data_confirmed_cases = pd.read_csv("Data1.csv")
+    print(data_confirmed_cases['Country/Region'])
 
-    # Create table that contains data for specified country
+        # Create table that contains data for specified country
     if (country != 'World'):
         data_country = data_confirmed_cases[data_confirmed_cases["Country/Region"] == country]
         data_country["Date"] = pd.to_datetime(data_country["Date"])
@@ -84,7 +88,45 @@ def get_stats(country):
         daily_cases = data_confirmed_cases[data_confirmed_cases['Date'] == last_date]['Cases_per_day'].sum()
         daily_deaths = data_confirmed_cases[data_confirmed_cases['Date'] == last_date]['Deaths_per_day'].sum()
 
-        return (total_cases, total_deaths, daily_cases, daily_deaths)
+        graphJSON = draw_map(data_confirmed_cases, last_date)
+
+        return (total_cases, total_deaths, daily_cases, daily_deaths, graphJSON)
+
+
+# locations - Values from this column or array_like are to be interpreted
+# according to locationmode and mapped to longitude/latitude.
+# locationmode - Determines the set of locations used to match entries in locations to regions on the map.
+# color - Values from this column or array_like are used to assign color to marks.
+# hover_name - Values from this column or array_like appear in bold in the hover tooltip.
+# color_continuous_scale
+def draw_map(data_confirmed_cases, last_date):
+    group_by_country_date = data_confirmed_cases.groupby(['Country/Region', 'Date'])
+    covid_confirmed = group_by_country_date.sum().reset_index().sort_values(['Date'], ascending=False)
+
+    fig = px.choropleth(
+        covid_confirmed[::-1],  # Dataframe
+        locations='Country/Region',
+        locationmode='country names',
+        color='Confirmed_cases',
+        hover_name='Country/Region',  # Text to be displayed in Bold upon hover
+        hover_data=['Confirmed_cases'],  # Extra text to be displayed in Hover tip
+        animation_frame='Date',  # Data for animation, time-series data
+        color_continuous_scale=px.colors.diverging.RdYlGn[::-1]
+    )
+
+    fig.update_layout(
+        title_text=f"COVID-19 Spread in the World up to {last_date}",
+        title_x=0.5,
+        geo=dict(
+            showframe=False,
+            showcoastlines=False,
+            projection_type='equirectangular'
+        )
+    )
+
+    graphJSON = json.dumps(fig, cls=py.utils.PlotlyJSONEncoder)
+
+    return (graphJSON)
 
 
 def top_cases(Top_10_cases_total, Top_10_deaths_total, Top_10_cases_today, Top_10_deaths_today):
@@ -155,6 +197,7 @@ def total_cases_country(data, country):
         plt.savefig(IMG_PATH + "Covid_country_total.png")
         plt.close(figure)
     plt.show()
+
 
 def daily_cases_country(data, country):
     with plt.style.context(('dark_background')):
