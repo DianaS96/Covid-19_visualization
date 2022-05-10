@@ -12,7 +12,7 @@ With this app you can get the following info:
   * Top 10 countries with the highest number of deaths from COVID-19 
   * Covid-19 spread in the world (map visualization)
 
-Programming languages and technologies used: Python (Flask, Pandas, NumPy, Matplotlib), HTML, CSS
+Programming languages and technologies used: Python (Flask, Pandas, NumPy, Matplotlib), HTML, CSS, Docker
 
 ## Example of visualization (data as of 19/03/2022)
 ### COVID-19 data for specified country
@@ -35,6 +35,13 @@ Programming languages and technologies used: Python (Flask, Pandas, NumPy, Matpl
 </details>
 
 ## Usage
+### Method 1 (using Docker) :package:	:whale:	
+* Clone this repo
+* Run **`docker-compose up`**
+* Enter in browser **`http://localhost:5000/`**
+* Don't forget to remove container and image after exiting the program (**`docker rm [container_name]`** and **`docker image rm [image_name]`** )
+
+### Method 2 (without Docker)
 * Clone this repo
 * Install all necessary packages (see file requirements.txt)
 * run **`app.py`** or **`flask run`**
