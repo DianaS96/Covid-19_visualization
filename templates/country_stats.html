@@ -36,8 +36,8 @@
                 <div class="card-body">
                   <h2 style='text-align: center'>Total cases: {% block total_cases %} {{total_cases|safe}} {% endblock %}</h2>
                   <h2 style='text-align: center'>Total deaths: {% block total_deaths %} {{total_deaths|safe}} {% endblock %}</h2>
-                  <h2 style='text-align: center'>Daily cases: {% block daily_cases %} {{daily_cases|safe}} {% endblock %}</h2>
-                  <h2 style='text-align: center'>Daily deaths: {% block daily_deaths %} {{daily_deaths|safe}} {% endblock %}</h2>
+                  <h2 style='text-align: center'>Daily cases as of {% block date %} {{date|safe}}: {% block daily_cases %} {{daily_cases|safe}} {% endblock %}</h2>
+                  <h2 style='text-align: center'>Daily deaths as of {{date|safe}} {% endblock %}: {% block daily_deaths %} {{daily_deaths|safe}} {% endblock %}</h2>
                 </div>
               </div>
           </div>

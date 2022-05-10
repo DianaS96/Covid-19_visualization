@@ -1,0 +1,15 @@
+version: "3.10"
+
+services:
+  # location of Flask application Dockerfile
+  myapp:
+    build:
+      context: ./
+    # Docker image name
+    image: covid_visual
+    # Container name
+    container_name: covid
+    # this key maps flask application port 5000 to port 8000
+    ports:
+      - 5000:5000
+
